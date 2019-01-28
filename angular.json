@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "todoapp-angular": {
+    "giggleapp-angular": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/todoapp-angular",
+            "outputPath": "dist/giggleapp-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "todoapp-angular:build"
+            "browserTarget": "giggleapp-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "todoapp-angular:build:production"
+              "browserTarget": "giggleapp-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "todoapp-angular:build"
+            "browserTarget": "giggleapp-angular:build"
           }
         },
         "test": {
@@ -106,7 +110,7 @@
         }
       }
     },
-    "todoapp-angular-e2e": {
+    "giggleapp-angular-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -115,11 +119,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "todoapp-angular:serve"
+            "devServerTarget": "giggleapp-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "todoapp-angular:serve:production"
+              "devServerTarget": "giggleapp-angular:serve:production"
             }
           }
         },
@@ -135,5 +139,5 @@
       }
     }
   },
-  "defaultProject": "todoapp-angular"
+  "defaultProject": "giggleapp-angular"
 }

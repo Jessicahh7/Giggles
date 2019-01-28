@@ -1,3 +1,6 @@
+// import { Response } from '@angular/http';
+// import { GiggleService } from './services/giggle.services';
+// import Giggle from './models/giggle.models';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todoapp-angular';
+  title = 'giggleapp-angular';
+
+    ngOnInit() {
+
+    }
+
 }

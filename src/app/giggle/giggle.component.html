@@ -1,0 +1,92 @@
+
+<div class="jumbotron jumbotron-fluid jh-jumbo">
+    <div class="container">
+      <h1 class="display-3 jh-jumbotext">Got Jokes?</h1>
+      <p class="lead jh-jumbotext">Help us make people laugh, share your jokes with the world!</p>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+      <form>
+        <div class="form-row">
+
+          <div class="col-md-4">
+            <input type="text" name="title" id="title" [(ngModel)]="newGiggle.title" placeholder="Name" class="form-control">
+          </div>
+          <div class="col-md-7">
+            <input name="description" id="description" [(ngModel)]="newGiggle.description" placeholder="How did the telephone propose to its girlfriend? He gave her a ring!"
+              class="form-control" id="description">
+          </div>
+          <div class="col-md-1">
+            <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+
+  <br />
+
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+
+      <div class="giggles" *ngIf="gigglesList">
+        <table class="table table-striped table-dark">
+          <thead class="h">
+            <tr class="h">
+              <th class="h">Name</th>
+              <th class="h">Description</th>
+              <th class="h">Date</th>
+              <th class="h">Status</th>
+              <th class="h">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="giggle" (dblclick)="editGiggle(giggle)" *ngFor="let giggle of gigglesList">
+
+              <ng-container *ngIf="!editGiggles.includes(giggle); else editTD">
+                <td>{{giggle.title}}</td>
+                <td>{{giggle.description}}</td>
+                <td>{{giggle.date | date}}</td>
+                <td>{{giggle.status}}</td>
+              </ng-container>
+
+              <ng-template #editTD>
+                <td><input type="text" name="title" id="title" (keypress)="submitGiggle($event, giggle)" [(ngModel)]="giggle.title"
+                    placeholder="Name" class="form-control"></td>
+                <td><input type="text" name="description" id="description" (keypress)="submitGiggle($event, giggle)"
+                    [(ngModel)]="giggle.description" placeholder="Joke" class="form-control"></td>
+                <td>{{giggle.date | date}}</td>
+                <td>
+                  <input type="text" name="status" id="status" (keypress)="submitGiggle($event, giggle)" [(ngModel)]="giggle.status"
+                    placeholder="Status" class="form-control">
+                </td>
+              </ng-template>
+
+              <td class="o">
+                <button class="btn btn-success donebtn" (click)="doneGiggle(giggle)">
+                  <i class="fa fa-check"></i>
+                </button>
+                <button class="btn btn-primary editbtn" (click)="editGiggle(giggle)">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger deletebtn" (click)="deleteGiggle(giggle)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+
+  </div>
+</div>
